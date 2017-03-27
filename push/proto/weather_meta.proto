@@ -1,0 +1,63 @@
+syntax = "proto2";
+
+package push_controller;
+
+message WeatherPageDataItem {
+  optional string aqi = 1;
+  optional string current_temp = 2;
+  optional string date = 3;
+  optional string img_url = 4;
+  optional string location = 5;
+  optional string max_temp = 6;
+  optional string min_temp = 7;
+  optional string pm25 = 8;
+  optional string status = 9;
+  optional string sunrise = 10;
+  optional string sunset = 11;
+  optional string tips = 12;
+  optional string unit = 13;
+  optional string weather = 14;
+  optional string weather_bg = 15;
+  optional string week_day = 16;
+  optional string wind = 17;
+  optional string wind_dir = 18;
+}
+
+message WeatherParams {
+  repeated WeatherPageDataItem page_datas = 1;
+  optional string tts = 2;
+  optional WeatherPageDataItem yesterday = 3;
+}
+
+message WeatherDataItem {
+  optional WeatherParams params = 1;
+  optional string source = 2;
+  optional string type = 3;
+}
+
+message WeatherDataSummary {
+  optional string hint = 1;
+  optional string title = 2;
+  optional string type = 3;
+}
+
+message WeatherSemantic {
+  optional string action = 1;
+}
+
+message WeatherContent {
+  optional float confidence = 1;
+  repeated WeatherDataItem data = 2;
+  optional WeatherDataSummary data_summary = 3;
+  optional string msg_id = 4;
+  optional string query = 5;
+  optional string search_query = 6;
+  optional WeatherSemantic semantic = 7;
+  optional string task = 8;
+  optional string task_name = 9;
+}
+
+message WeatherInfo {
+  optional WeatherContent content = 1;
+  optional string status = 2;
+}

@@ -1,0 +1,32 @@
+syntax = "proto2";
+
+package message_receiver;
+
+message ExtractField {
+  optional string key = 1;
+  optional string value = 2;
+}
+
+message ExtractRule {
+  optional string first_type = 1;
+  optional string second_type = 2;
+  optional string regex = 3;
+  repeated ExtractField extract_field = 4;
+  optional string test_message = 5;
+}
+
+message ExtractRuleConf {
+  repeated ExtractRule extract_rule = 1;
+}
+
+message MessageMatcher {
+  optional string user_id = 1;
+  optional string message_input = 2;
+  optional string message_output = 3;
+}
+
+enum ReceiverType {
+  kKafkaThreadReceiver = 1;
+  kRedisThreadReceiver = 2;
+  kKafkaThreadPoolReceiver = 3;
+}

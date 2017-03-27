@@ -1,0 +1,9 @@
+syntax = "proto2";
+
+package birthday;
+
+message BirthInfo {
+  optional string user_id = 1;
+  optional string birth_date = 2;
+  optional string wwid = 3;
+}

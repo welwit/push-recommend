@@ -1,0 +1,32 @@
+syntax = "proto2";
+
+package flight;
+
+message FlightRequest {
+  optional string flight_no = 1;
+  optional string depart_date = 2;
+}
+
+message FlightResponse {
+  optional string flight_no = 1;
+  optional string airport_from = 2;
+  optional string airport_to = 3;
+  optional string city_from = 4;
+  optional string city_to = 5;
+  optional string terminal_from = 6;
+  optional string terminal_to = 7;
+  optional string plan_takeoff = 8;
+  optional string plan_arrive = 9;
+  optional string estimated_takeoff = 10;
+  optional string estimated_arrive = 11;
+  optional string actual_takeoff = 12;
+  optional string actual_arrive = 13;
+  optional string checkin_counter = 14;
+  optional string checkin_stoptime = 15;
+  optional string plan_gate = 16;
+  optional string actual_gate = 17;
+  optional string gate_is_change = 18;
+  optional string is_delay = 19;
+  optional string carousel = 20;
+  optional string depart_date = 21;
+}

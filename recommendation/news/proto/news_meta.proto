@@ -1,0 +1,46 @@
+syntax = "proto2";
+
+package recommendation;
+
+message ToutiaoCategoryInfo {
+  optional int32 id = 1;
+  optional string name = 2;
+  optional string english_name = 3;
+}
+
+message StoryDetail {
+  optional string app_url = 1;
+  optional string background_url = 2;
+  optional string browser_url = 3;
+  optional int64  cid = 4;
+  optional string publish_time = 5;
+  optional string source = 6;
+  optional string summary = 7;
+  optional string tip = 8;
+  optional string title = 9;
+  optional string type = 10;
+  optional string id = 11;
+  optional string keywords = 12;
+  optional double hot_score = 13;
+  repeated string hit_hot_terms = 14;
+  repeated StoryDetail news_list = 15;
+}
+
+message NewsInfo {
+  optional uint64 news_id = 1;
+  optional string url = 2;
+  optional string title = 3;
+  optional string content = 4;
+  optional string category = 5;
+  optional string publish_source = 6;
+  optional int32  publish_time = 7;
+  optional string summary = 8;
+  optional string keywords = 9;
+  optional string tags = 10;
+  optional string image = 11;
+  optional string meta_publish_source = 12;
+  optional int32  meta_publish_time = 13;
+  optional int32  data_utilization = 14;
+  optional string score = 15;
+  optional string topic  = 16;
+}

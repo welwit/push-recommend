@@ -1,0 +1,36 @@
+// Copyright 2016 Mobvoi Inc. All Rights Reserved.
+// Author: xjliu@mobvoi.com (Xiaojia Liu)
+
+syntax = "proto2";
+
+package train;
+
+enum TrainnoType {
+  kZhida = 1;
+  kGaotie = 2;
+  kDongche = 3;
+  kTekuai = 4;
+  kKuaiche = 5;
+  kOther = 6;
+}
+
+enum QueryStatus {
+  kSuccess = 0;
+  kFailure = 1;
+  kNotFound = 2;
+};
+
+enum DataSource {
+  kSourceCtrip = 1;
+  kSourceBaidu = 2;
+};
+
+message TimeTable {
+  optional string train_no = 1;
+  optional int32 station_no = 2;
+  optional string station_name = 3;
+  optional string get_in_time = 4;
+  optional string depart_time = 5;
+  optional string stay_time = 6;
+  optional string running_time = 7;
+}

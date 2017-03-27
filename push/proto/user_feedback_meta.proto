@@ -1,0 +1,54 @@
+syntax = "proto2";
+
+package feedback;
+
+enum BusinessType {
+  kTotal = 1;
+  kSchedule = 2;
+  kWeather = 3;
+  kMovie = 4;
+  kNews = 5;
+}
+
+enum Status {
+  kSuccess = 0;
+  kFailed = 1;
+}
+
+message UserFeedbackRequest {
+  optional string user_id = 1;
+  message DataList {
+    optional BusinessType business_type = 1;
+    optional bool user_feedback_status = 2;
+  }
+  repeated DataList data_list = 2;
+}
+
+message UserFeedbackResponse {
+  optional string user_id = 1;
+  optional Status status = 2;
+  optional string err_msg = 3;
+  message DataList {
+    optional BusinessType business_type = 1;
+    optional bool response_status = 2;
+  }
+  repeated DataList data_list = 4;
+  optional string response_reason = 5;
+}
+
+message UserFeedbackQueryResquest {
+  optional string user_id = 1;
+}
+
+message UserFeedbackQueryResponse {
+  optional string user_id = 1;
+  optional Status status = 2;
+  optional string err_msg = 3;
+  message DataList {
+    optional BusinessType business_type = 1;
+    optional bool response_status = 2;
+    optional bool user_feedback_status = 3;
+  }
+  repeated DataList data_list = 4;
+  optional string response_reason = 5;
+}

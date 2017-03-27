@@ -1,0 +1,95 @@
+syntax = "proto2";
+
+package recommendation;
+
+enum Region {
+  kBeijing = 1;
+  kTianjin = 2;
+  kHebei = 3;
+  kShanxi = 4;
+  kNeimeng = 5;
+  kLiaoning = 6;
+  kJilin = 7;
+  kHeilongjiang = 8;
+  kShanghai = 9;
+  kJiangsu = 10;
+  kZhejiang = 11;
+  kAnhui = 12;
+  kFujian = 13;
+  kJiangxi = 14;
+  kShandong = 15;
+  kHenan = 16;
+  kHubei = 17;
+  kHunan = 18;
+  kGuangdong = 19;
+  kGuangxi = 20;
+  kHainan = 21;
+  kChongqing = 22;
+  kSichuan = 23;
+  kGuizhou = 24;
+  kYunnan = 25;
+  kXizang = 26;
+  kShanx = 27;
+  kGansu = 28;
+  kQinhai = 29;
+  kNingxia = 30;
+  kXingjiang = 31;
+  kShenzhen = 32;
+  kOther = 33;
+}
+
+enum PageTopic {
+  kPolitics = 1;          // 政治
+  kMilitary = 2;          // 军事
+  kFinance = 3;           // 金融 (可以包括财经、证券、股票、理财等)
+  kLegal = 4;             // 法治
+  kAuto = 5;              // 汽车
+  kHouse = 6;             // 房产
+  kTech = 7;              // 科技
+  kEnt = 8;               // 娱乐
+  kSports = 9;            // 体育
+  kEdu = 10;              // 教育
+  kHealth = 11;           // 健康
+  kTravel = 12;           // 旅游
+  kFood = 13;             // 美食
+  kWorld = 14;            // 国际新闻
+  kHongkong = 15;         // 港澳新闻
+  kTaiwan = 16;           // 台湾新闻
+  kChina = 17;            // 国内新闻
+  kLocal = 18;            // 本地新闻
+  kLeaders = 19;          // 领导人新闻
+  kEnergy = 20;           // 能源及环保
+  kOverseas = 21;         // 海外华人
+  kGongyi = 22;           // 公益频道
+  kYuqing = 23;           // 舆情频道
+  kLottery = 24;          // 彩票
+  kComments = 25;         // 网评频道
+  kInfo = 26;             // 信息化
+  kPhoto = 27;            // 图片
+  kVideo = 28;            // 视频
+  kNews = 29;             // 默认新闻频道（不区分国内国际等）
+  kSociety = 30;          // 社会
+  kFashion = 31;          // 时尚
+  kBaby = 32;             // 育儿
+  kCulture = 33;          // 文化
+  kDajia = 34;            // 腾讯大家频道
+  kDigital = 35;          // 数码频道
+}
+
+enum Website {
+  kXinhua = 1;        // 新华网
+  kSina = 2;          // 新浪网
+  kTencent = 3;       // 腾讯网
+  kNetease = 4;       // 网易网
+  kSohu = 5;          // 搜狐网
+  kPeople = 6;        // 人民网
+}
+
+message PageTopicInfo {
+  optional string url_pattern = 1;
+  optional double page_weight = 2;
+  optional Website father_web = 3;
+  optional PageTopic page_topic = 4;
+  optional double topic_weight = 5;
+  optional Region region = 6; // 本地新闻地区
+}

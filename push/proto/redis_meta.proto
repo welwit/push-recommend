@@ -1,0 +1,13 @@
+syntax = "proto2";
+
+package recommendation;
+
+message RedisConf {
+  optional string host = 1;
+  optional int32 port = 2;
+  optional int32 timeout = 3;
+  optional int32 conn_num = 4;
+  optional bool is_use_password = 5;
+  optional string password = 6;
+}
+

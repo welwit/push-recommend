@@ -1,0 +1,39 @@
+syntax = "proto2";
+
+package recommendation;
+
+message DeviceInfo {
+  optional string id = 1;
+  optional string device_type = 2;
+  optional string bluetooth_match_id = 3;
+  optional string updated = 4;
+  optional string wear_model = 5;
+  optional string wear_version = 6;
+  optional string wear_version_channel = 7;
+  optional string wear_os = 8;
+  optional string phone_model = 9;
+  optional string phone_version = 10;
+  optional string phone_os = 11;
+  optional double latitude = 12;
+  optional double longitude = 13;
+}
+
+message Nickname {
+  optional string package_name = 1;
+  optional string name = 2;
+  optional string device_id = 3;
+}
+
+message LocationInfo {
+  optional string country = 1;
+  optional string province = 2;
+  optional string city = 3;
+  optional string sublocality = 4;
+  optional string street = 5;
+  optional string distance = 6;
+  optional double country_code = 7;
+  optional string adcode = 8;
+  optional string street_number = 9;
+  optional double lat = 10;
+  optional double lng = 11;
+}

@@ -1,0 +1,49 @@
+syntax = "proto2";
+
+package recommendation;
+
+message KafkaConfItem {
+  optional string name = 1;
+  optional string value = 2;
+}
+
+message KafkaConfCallback {
+  optional string name = 1;
+  optional bool is_set_callback = 2;
+}
+
+message KafkaConfMeta {
+  repeated KafkaConfItem global_item_list = 1;
+  repeated KafkaConfCallback global_callback_list = 2;
+  repeated KafkaConfItem topic_item_list = 3;
+  repeated KafkaConfCallback topic_callback_list = 4;
+  optional string zookeeper_servers = 5;
+  optional string topic = 6;
+  optional bool use_default_topic_conf = 7;
+}
+
+enum ProducerMsgFlag {
+  kMsgFree = 1;
+  kMsgCopy = 2;
+  kMsgBlock = 3;
+}
+
+message KafkaProducerMeta {
+  optional string topic = 1; 
+  optional int32 partition = 2;
+  optional int32 msg_flags = 3;
+  optional string msg_key = 4;
+  optional int32 poll_timeout_ms = 5;
+};
+
+message TopicPartitionMeta {
+  optional string topic = 1;
+  optional int32 partition = 2;
+  optional int32 offset = 3;
+}
+
+message KafkaConsumerMeta {
+  optional int32 consume_timeout_ms = 1;
+  repeated string topic_list = 2;
+  repeated TopicPartitionMeta topic_partition_list = 3;
+};

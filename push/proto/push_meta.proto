@@ -1,0 +1,200 @@
+syntax = "proto2";
+
+package push_controller;
+
+enum BusinessType {
+  kBusinessDefault = 0;
+  kBusinessFlight = 1;
+  kBusinessMovie = 2;
+  kBusinessTrain = 3;
+  kBusinessWeather = 4;
+  kBusinessHotel = 5;
+  kBusinessNews = 6;
+}
+
+enum MessageType {
+  kMessageDefault = 0;
+  kMessageNotification = 1;
+  kMessageFlight = 11;
+  kMessageTrain = 12;
+  kMessageWeather = 13;
+  kMessageMovie = 14;
+  kMessageWatchface = 15;
+  kMessageHotel = 16;
+  kMessageBirth = 17;
+  kMessageGeneral = 20;
+}
+
+enum TrainSeatType {
+  kDefault = 0;
+  kBusinessClassSeat = 1;
+  kSpecailSeat = 2;
+  kFirstClassSeat = 3;
+  kSecondClassSeat = 4;
+  kAdvancedSoftSleeper = 5;
+  kSoftSleeper = 6;
+  kHardSleeper = 7;
+  kPowerSleeper = 8;
+  kAdvancedPowerSleeper = 9;
+  kSoftSeat = 10;
+  kHardSeat = 11;
+  kNoSeat = 12;
+}
+
+enum OrderStatus {
+  kOrderDefault = 0;
+  kOrderInitialization = 1;
+  kOrderProcessing = 2;
+  kOrderSuccess = 3;
+  kOrderFailed = 4;
+  kOrderCanceled = 5;
+  kOrderException = 6;
+}
+
+enum PushStatus {
+  kPushDefault = 0;
+  kPushPending = 1;
+  kPushProcessing = 2;
+  kPushSuccess = 3;
+  kPushFailed = 4;
+  kPushCancled = 5;
+  kPushEventException = 6;
+}
+
+enum EventType {
+  kEventDefault = 0;
+  kEventRemindTimelineLastDay = 1;
+  kEventRemindTimelineToday = 2;
+  kEventRemindTimeline3Hour = 3;
+  kEventRemindTimeline1Hour = 4;
+  kEventRemindTimelineDepart = 5;
+  kEventRemindTimelineShowtime = 6;
+  kEventRemindTimeline30Min = 7;
+  kEventRemindTimelineTakeoff = 8;
+  kEventRemindTimelineArrive = 9;
+}
+
+enum UserSetType {
+  kUserDefaultSet = 0;
+  kUserAllSet = 1;
+  kUserOnlyTestSet = 2;
+  kUserNonTestSet = 3;
+}
+
+message MovieSeat {
+  optional int32 row_no = 1;
+  optional int32 seat_no = 2;
+}
+
+message TrainSeat {
+  optional int32 carriage = 1;
+  optional int32 seat_no = 2;
+  optional TrainSeatType seat_type = 3;
+}
+
+message UserFlightInfo {
+  optional string user_id = 1;
+  optional string order_id = 2;
+  optional string flight_no = 3;
+  optional int32  takeoff_time = 4;
+  optional int32  arrival_time = 5;
+}
+
+message UserMovieInfo {
+  optional string user_id = 1;
+  optional string order_id = 2;
+  optional string cinema = 3;
+  optional string movie = 4;
+  optional string hall = 5;
+  optional string seat_list = 6;
+  optional int32  show_time = 7;
+  optional string verification_code = 8;
+  optional string serial_number = 9;
+}
+
+message UserTrainInfo {
+  optional string user_id = 1;
+  optional string order_id = 2;
+  optional string train_no = 3;
+  optional string depart_station = 4;
+  optional string arrival_station = 5;
+  optional int32  depart_time = 6;
+  optional int32  arrival_time = 7;
+  optional string seat_list = 8;
+}
+
+message UserHotelInfo {
+  optional string user_id = 1;
+  optional string order_id = 2;
+  optional string address = 3;
+  optional string tel = 4;
+  optional string name = 5;
+  optional int32 arrive_time = 6;
+  optional string room_category = 7;
+  optional string time_interval = 8;
+  optional string hotel_name = 9;
+}
+
+message BusinessInfo {
+  optional UserFlightInfo user_flight_info = 1;
+  optional UserMovieInfo user_movie_info = 2;
+  optional UserTrainInfo user_train_info = 3;
+  optional UserHotelInfo user_hotel_info = 4;
+}
+
+message UserOrderInfo {
+  optional string id = 1;
+  optional string user_id = 2;
+  optional BusinessType business_type = 3;
+  optional int32 business_time = 4;
+  optional string order_detail = 5;
+  optional int32 updated = 6;
+  optional OrderStatus order_status = 7;
+  optional BusinessInfo business_info = 8;
+  optional int32 finished_time = 9;
+  optional int64 fingerprint_id = 10;
+}
+
+message PushEventInfo {
+  optional string id = 1;
+  optional string order_id = 2;
+  optional string user_id = 3;
+  optional BusinessType business_type = 4;
+  optional EventType event_type = 5;
+  optional string push_detail = 6;
+  optional int32 push_time = 7;
+  optional string business_key = 8;
+  optional bool is_realtime = 9;
+  optional PushStatus push_status = 10;
+  optional int32 updated = 11;
+  optional int32 finished_time = 12;
+  optional Nickname phone_nickname = 13;
+  optional Nickname watch_nickname = 14;
+  optional Device phone_device = 15;
+  optional Device watch_device = 16;
+  optional int64 fingerprint_id = 17;
+}
+
+message Nickname {
+  optional string package_name = 1;
+  optional string name = 2;
+  optional string device_id = 3;
+}
+
+message Device {
+  optional string id = 1;
+  optional string device_type = 2;
+  optional string bluetooth_match_id = 3;
+  optional string wear_model = 4;
+  optional string wear_version = 5;
+  optional string wear_version_channel = 6;
+  optional string wear_os = 7;
+  optional string phone_model = 8;
+  optional string phone_version = 9;
+  optional string phone_os = 10;
+  optional string admin_area = 11;
+  optional string locality = 12;
+  optional string sub_locality = 13;
+  optional double latitude = 14;
+  optional double longitude = 15;
+}

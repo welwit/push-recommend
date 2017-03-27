@@ -1,0 +1,17 @@
+syntax = "proto2";
+
+import "recommendation/news/proto/topic_meta.proto";
+
+package recommendation;
+
+message CrawlerConfigItem {
+  optional string     seed_name = 1;
+  optional string     seed_url = 2;
+  optional string     seed_page_template_file = 3;
+  optional string     content_page_template_file = 4;
+  optional PageTopic  page_topic = 5;
+}
+
+message CrawlerConfig {
+  repeated CrawlerConfigItem crawler_config_item = 1;
+}
